@@ -1,6 +1,12 @@
+import { useSettings } from "../hooks/useSettings";
+
 export default function WhatsAppButton() {
-  const phoneNumber = "919000164356";
-  const message = "Hello TS SHIVA JI ENTERPRICES PVT LTD, I would like to discuss a project.";
+  const { settings } = useSettings();
+  
+  // Extract phone number from settings or use default
+  const phoneNumber = settings.whatsapp_number || settings.company_phone?.replace(/[^0-9]/g, '') || "919000164356";
+  const companyName = settings.company_name || "TS SHIVA JI ENTERPRISES PVT LTD";
+  const message = `Hello ${companyName}, I would like to discuss a project.`;
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

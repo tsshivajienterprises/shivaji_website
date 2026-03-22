@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("admin_users")
+}
+
+model Enquiry {
+  id              String   @id @default(uuid())
+  name            String
+  phone           String
+  email           String
+  serviceInterest String?
+  message         String
+  status          String   @default("new")
+  source          String   @default("website")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("enquiries")
+}
+
+model CallbackRequest {
+  id            String   @id @default(uuid())
+  name          String
+  phone         String
+  preferredTime String?
+  notes         String?
+  status        String   @default("pending")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("callback_requests")
+}
+
+model Project {
+  id               String        @id @default(uuid())
+  title            String
+  slug             String        @unique
+  category         String
+  shortDescription String
+  fullDescription  String        @db.Text
+  location         String?
+  coverImageUrl    String
+  isFeatured       Boolean       @default(false)
+  displayOrder     Int           @default(0)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  galleryItems     GalleryItem[]
+
+  @@map("projects")
+}
+
+model GalleryItem {
+  id           String   @id @default(uuid())
+  title        String
+  imageUrl     String
+  projectId    String?
+  displayOrder Int      @default(0)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  project      Project? @relation(fields: [projectId], references: [id], onDelete: SetNull)
+
+  @@map("gallery_items")
+}
+
+model SiteSetting {
+  id           String   @id @default(uuid())
+  settingKey   String   @unique
+  settingValue String   @db.Text
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("site_settings")
+}

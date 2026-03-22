@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #0b1020;
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: #d4af37;
+  color: black;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #0b1020;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.45);
+  border-radius: 999px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.75);
+}
+
+/* ── Building background animations ── */
+@keyframes bld-breathe1 {
+  0%, 100% { opacity: 0.055; }
+  50%       { opacity: 0.085; }
+}
+@keyframes bld-breathe2 {
+  0%, 100% { opacity: 0.07; }
+  50%       { opacity: 0.11; }
+}
+@keyframes bld-breathe3 {
+  0%, 100% { opacity: 0.10; }
+  50%       { opacity: 0.16; }
+}
+.bld-l1 { animation: bld-breathe1 9s  ease-in-out infinite; }
+.bld-l2 { animation: bld-breathe2 11s ease-in-out infinite; }
+.bld-l3 { animation: bld-breathe3 13s ease-in-out infinite; }

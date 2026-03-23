@@ -1,0 +1,192 @@
+╔══════════════════════════════════════════════════════════════════╗
+║          DEPLOYMENT CHECKLIST - tsshivajienterprises.com         ║
+╚══════════════════════════════════════════════════════════════════╝
+
+PHASE 1: PREPARATION (5 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Code is working locally
+[ ] Backend running on http://localhost:5000
+[ ] Frontend running on http://localhost:5174
+[ ] Contact form submits successfully
+[ ] Database connected to Supabase
+[ ] All files committed to Git
+[ ] GitHub repository created
+[ ] Code pushed to GitHub
+
+PHASE 2: BACKEND DEPLOYMENT (15 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Created Render.com account
+[ ] Connected GitHub repository
+[ ] Created Web Service
+[ ] Configured build settings:
+    [ ] Root Directory: backend
+    [ ] Build Command: npm install && npx prisma generate
+    [ ] Start Command: npm start
+[ ] Added all environment variables (15 variables)
+[ ] Clicked "Create Web Service"
+[ ] Deployment completed successfully
+[ ] Got backend URL: https://______________.onrender.com
+[ ] Tested: https://______________.onrender.com/health
+[ ] Response: {"status":"ok"}
+
+PHASE 3: FRONTEND DEPLOYMENT (10 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Created Vercel account
+[ ] Connected GitHub repository
+[ ] Imported project
+[ ] Configured build settings:
+    [ ] Framework: Vite
+    [ ] Build Command: npm run build
+    [ ] Output Directory: dist
+[ ] Added environment variable:
+    [ ] VITE_API_BASE_URL=https://api.tsshivajienterprises.com
+[ ] Clicked "Deploy"
+[ ] Deployment completed successfully
+[ ] Got frontend URL: https://______________.vercel.app
+[ ] Tested: Website loads correctly
+
+PHASE 4: DNS CONFIGURATION (10 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Logged into Hostinger
+[ ] Navigated to: Domains → tsshivajienterprises.com → DNS
+[ ] Added/Modified A Record:
+    [ ] Type: A
+    [ ] Name: @
+    [ ] Value: 76.76.21.21
+    [ ] TTL: 3600
+[ ] Added/Modified CNAME for WWW:
+    [ ] Type: CNAME
+    [ ] Name: www
+    [ ] Value: cname.vercel-dns.com
+    [ ] TTL: 3600
+[ ] Added CNAME for API:
+    [ ] Type: CNAME
+    [ ] Name: api
+    [ ] Value: ______________.onrender.com
+    [ ] TTL: 3600
+[ ] Saved all DNS changes
+
+PHASE 5: CUSTOM DOMAINS (10 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] In Vercel Dashboard:
+    [ ] Went to Project → Settings → Domains
+    [ ] Added: tsshivajienterprises.com
+    [ ] Added: www.tsshivajienterprises.com
+    [ ] DNS verification passed
+    [ ] SSL certificates issued
+[ ] In Render Dashboard:
+    [ ] Went to Web Service → Settings → Custom Domains
+    [ ] Added: api.tsshivajienterprises.com
+    [ ] DNS verification passed
+    [ ] SSL certificate issued
+
+PHASE 6: DNS PROPAGATION (5-30 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Checked DNS propagation at dnschecker.org:
+    [ ] tsshivajienterprises.com → 76.76.21.21
+    [ ] www.tsshivajienterprises.com → cname.vercel-dns.com
+    [ ] api.tsshivajienterprises.com → ______________.onrender.com
+[ ] Waited for global propagation
+[ ] All regions showing correct values
+
+PHASE 7: TESTING (10 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Backend API Tests:
+    [ ] https://api.tsshivajienterprises.com/health
+        Response: {"status":"ok"}
+    [ ] https://api.tsshivajienterprises.com/api/projects
+        Response: [] or project list
+    [ ] No CORS errors
+
+[ ] Frontend Tests:
+    [ ] https://tsshivajienterprises.com loads
+    [ ] https://www.tsshivajienterprises.com loads
+    [ ] Green padlock (SSL) on both
+    [ ] No console errors (F12)
+    [ ] All sections visible
+    [ ] Images loading
+    [ ] Animations working
+
+[ ] Integration Tests:
+    [ ] Filled contact form
+    [ ] Submitted successfully
+    [ ] Saw success message
+    [ ] Checked Supabase → enquiries table
+    [ ] Enquiry appeared in database
+
+[ ] Mobile Tests:
+    [ ] Opened on mobile device
+    [ ] Website responsive
+    [ ] Form works on mobile
+    [ ] All features functional
+
+PHASE 8: SECURITY (5 minutes)
+═══════════════════════════════════════════════════════════════════
+[ ] Changed JWT_SECRET in Render environment variables
+[ ] Generated strong random string (32+ characters)
+[ ] Redeployed backend
+[ ] Verified new secret working
+
+PHASE 9: POST-DEPLOYMENT (Ongoing)
+═══════════════════════════════════════════════════════════════════
+[ ] Updated admin password (login and change)
+[ ] Set up Cloudinary account
+[ ] Added Cloudinary credentials to Render
+[ ] Configured email (Gmail app password)
+[ ] Added email credentials to Render
+[ ] Tested email notifications
+[ ] Added real projects to database
+[ ] Uploaded gallery images
+[ ] Updated site settings
+[ ] Shared website with team/clients
+
+PHASE 10: MONITORING (Daily/Weekly)
+═══════════════════════════════════════════════════════════════════
+[ ] Set up Vercel Analytics
+[ ] Set up Google Analytics
+[ ] Monitor Render metrics
+[ ] Check Supabase usage
+[ ] Review enquiries daily
+[ ] Check deployment logs weekly
+[ ] Monitor bandwidth usage
+[ ] Review security advisories
+
+═══════════════════════════════════════════════════════════════════
+
+FINAL VERIFICATION
+═══════════════════════════════════════════════════════════════════
+✓ https://tsshivajienterprises.com - LIVE
+✓ https://www.tsshivajienterprises.com - LIVE
+✓ https://api.tsshivajienterprises.com - LIVE
+✓ SSL Certificates - ACTIVE
+✓ Contact Form - WORKING
+✓ Database - CONNECTED
+✓ All Features - FUNCTIONAL
+
+═══════════════════════════════════════════════════════════════════
+
+🎉 DEPLOYMENT COMPLETE! 🎉
+
+Your website is now live and accessible worldwide!
+
+═══════════════════════════════════════════════════════════════════
+
+IMPORTANT URLS TO BOOKMARK:
+───────────────────────────────────────────────────────────────────
+Website:        https://tsshivajienterprises.com
+Vercel:         https://vercel.com/dashboard
+Render:         https://dashboard.render.com
+Supabase:       https://supabase.com/dashboard
+Hostinger:      https://hostinger.com/cpanel
+GitHub:         https://github.com/YOUR_USERNAME/ts-shivaji-enterprices
+
+═══════════════════════════════════════════════════════════════════
+
+SUPPORT CONTACTS:
+───────────────────────────────────────────────────────────────────
+Vercel Support:     https://vercel.com/support
+Render Support:     https://render.com/support
+Supabase Support:   https://supabase.com/support
+Hostinger Support:  https://hostinger.com/support (24/7 Live Chat)
+
+═══════════════════════════════════════════════════════════════════

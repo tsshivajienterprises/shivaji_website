@@ -6,6 +6,7 @@ import { getAllCallbacks, updateCallbackStatus } from '../controllers/callbackCo
 import { createProject, updateProject, deleteProject } from '../controllers/projectController.js';
 import { createGalleryItem, updateGalleryItem, deleteGalleryItem } from '../controllers/galleryController.js';
 import { getAllSettings, updateSettings } from '../controllers/settingsController.js';
+import { getDashboardStats } from '../controllers/statsController.js';
 import { authenticate } from '../middleware/auth.js';
 import { validate } from '../middleware/validation.js';
 import { loginSchema, projectSchema, gallerySchema } from '../utils/validators.js';
@@ -39,5 +40,8 @@ router.delete('/gallery/:id', authenticate, deleteGalleryItem);
 // Settings
 router.get('/settings', authenticate, getAllSettings);
 router.patch('/settings', authenticate, updateSettings);
+
+// Stats
+router.get('/stats/dashboard', authenticate, getDashboardStats);
 
 export default router;

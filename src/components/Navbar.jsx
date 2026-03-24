@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Phone } from "lucide-react";
+import CallbackModal from "./CallbackModal";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,6 +14,7 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isCallbackOpen, setIsCallbackOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -56,6 +59,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <button
+            onClick={() => setIsCallbackOpen(true)}
+            className="flex items-center gap-2 py-1 transition-colors duration-200 hover:text-[#D4AF37]"
+          >
+            <Phone size={16} />
+            Callback
+          </button>
         </nav>
 
         {/* Desktop CTA */}
@@ -128,6 +138,11 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <CallbackModal 
+        isOpen={isCallbackOpen} 
+        onClose={() => setIsCallbackOpen(false)} 
+      />
     </header>
   );
 }

@@ -89,3 +89,11 @@ model SiteSetting {
 
   @@map("site_settings")
 }
+
+model VisitorStats {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @unique @default(now()) @db.Date
+  count     Int      @default(0)
+
+  @@map("visitor_stats")
+}

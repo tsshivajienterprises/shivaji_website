@@ -4,6 +4,7 @@ import { createCallbackRequest } from '../controllers/callbackController.js';
 import { getAllProjects, getFeaturedProjects, getProjectBySlug } from '../controllers/projectController.js';
 import { getAllGalleryItems } from '../controllers/galleryController.js';
 import { getPublicSettings } from '../controllers/settingsController.js';
+import { incrementVisits } from '../controllers/statsController.js';
 import { validate } from '../middleware/validation.js';
 import { enquirySchema, callbackSchema } from '../utils/validators.js';
 import { enquiryLimiter } from '../middleware/rateLimiter.js';
@@ -26,5 +27,8 @@ router.get('/gallery', getAllGalleryItems);
 
 // Settings
 router.get('/settings/public', getPublicSettings);
+
+// Stats
+router.post('/visits/increment', incrementVisits);
 
 export default router;
